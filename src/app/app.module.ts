@@ -12,6 +12,7 @@ import { CryptoSearchModule } from './features/crypto-search/crypto-search.modul
 import { SharedModule } from './shared/shared.module';
 import { SummaryModule } from './features/summary/summary.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { StartPageModule } from './features/start-page/start-page.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CryptoSearchModule,
     SharedModule,
     SummaryModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StartPageModule
   ],
   exports: [
   ],

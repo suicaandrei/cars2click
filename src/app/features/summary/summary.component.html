@@ -1,12 +1,19 @@
-<div class="wrapper">
-  <div class="card">
-    <div class="crypto">
-      <span>Last coin searched: {{coinSearched}}</span>
-    </div>
-    <div class="airport">
-      <span class="title">Last airports searched:</span>
-      <app-airports-table [airports]="airports"></app-airports-table>
+<div *ngIf="!loadPage;else showSpinner">
+  <app-page-title [pageTitle]="'Summary'"></app-page-title>
+  <div class="wrapper">
+    <div class="card">
+      <div class="crypto">
+        <span>Last coin searched: {{coinSearched}}</span>
+      </div>
+      <div class="airport">
+        <span class="title">Last airports searched:</span>
+        <app-airports-table [airports]="airports"></app-airports-table>
+      </div>
     </div>
   </div>
+  <app-navigation [pageNo]="3"></app-navigation>
 </div>
-<app-navigation [pageNo]="3"></app-navigation>
+
+<ng-template #showSpinner>
+  <mat-spinner [diameter]="60"></mat-spinner>
+</ng-template>

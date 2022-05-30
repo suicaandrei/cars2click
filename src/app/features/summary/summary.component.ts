@@ -10,6 +10,8 @@ export class SummaryComponent implements OnInit {
   public coinSearched: string | null;
   public airports: Airport[] = [];
 
+  public loadPage: boolean = true;
+
   constructor() {
     this.coinSearched = sessionStorage.getItem("coinSearched");
     
@@ -17,6 +19,9 @@ export class SummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.loadPage = false;
+    }, 3000);
   }
 
 }

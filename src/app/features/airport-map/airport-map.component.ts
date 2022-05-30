@@ -35,7 +35,9 @@ export class AirportMapComponent implements OnInit {
   constructor(private airportsService: AirportsService) { }
 
   ngOnInit() {
-    this.loadPage = false;
+    setTimeout(() => {
+      this.loadPage = false;
+    }, 3000);
   }
 
   setSearchPosition(event: google.maps.MapMouseEvent) {
@@ -43,6 +45,10 @@ export class AirportMapComponent implements OnInit {
   }
 
   async searchAirports() {
+    if(this.radiusControl.invalid) {
+      return;
+    }
+
     this.loadAirports = true;
     this.airportsMarkerPositions = [];
     this.airports = [];

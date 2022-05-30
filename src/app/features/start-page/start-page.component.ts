@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent implements OnInit {
+  public showSpinner: boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.showSpinner = true;
+    }, 3000);
   }
 
   goToAirportMap() {

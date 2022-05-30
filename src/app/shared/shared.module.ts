@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AirportsTableComponent } from './airports-table/airports-table.component';
+import { PageTitleComponent } from './page-title/page-title.component';
 
 
 @NgModule({
@@ -12,11 +13,13 @@ import { AirportsTableComponent } from './airports-table/airports-table.componen
   ],
   declarations: [
     NavigationComponent,
-    AirportsTableComponent
+    AirportsTableComponent,
+    PageTitleComponent
   ],
   exports: [
     NavigationComponent,
-    AirportsTableComponent
+    AirportsTableComponent,
+    PageTitleComponent
   ]
 })
 export class SharedModule { }

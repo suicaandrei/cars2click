@@ -1,14 +1,16 @@
+@import "/src/styles/varss";
+
 .wrapper {
     padding: 20px;
+    font-family: 'Poppins';
 
     .search-bar {
         display: flex;
         justify-content: center;
-        
+
         .mat-form-field {
             width: 50%;
             border-radius: 20px;
-
         }
     }
 
@@ -32,42 +34,69 @@
     }
 
     .data-table {
+        padding: 25px;
+        width: 50%;
+        margin: 25px auto;
+        border-radius: 10px;
+        box-shadow: $shadows;
+
         .headbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+        }
 
-            .filters {
-                display: flex;
+        .row {
+            display: table-row;
 
-                .sort-by {
-                    line-height: 1.8;
+            &.table-header {
+                span {
+                    vertical-align: super;
+                    margin-right: 5px;
                 }
 
-                .filter-btn {
+                .column {
                     cursor: pointer;
+                }
+            }
 
-                    span {
-                        vertical-align: super;
-                    }
+            .selected {
+                mat-icon {
+                    font-weight: 600;
                 }
 
-                .selected {
-                    span {
-                        font-weight: 500;
-                    }
+                span {
+                    font-weight: 500;
                 }
             }
         }
-        .row {
-            display: flex;
 
-            .price {
-                width: 180px;
-            }
-            .date {
-                width: 240px;
-                margin-left: 10px;
+        .row:nth-child(even) {
+            background-color: whitesmoke;
+        }
+
+        .column {
+            display: table-cell;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 17px;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+
+            .selected {
+                mat-icon {
+                    font-weight: 600;
+                }
+
+                span {
+                    font-weight: 500;
+                }
             }
         }
     }
+}
+
+mat-spinner {
+    margin: 250px auto;
 }

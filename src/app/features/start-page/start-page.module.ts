@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SummaryComponent } from './summary.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StartPageComponent } from './start-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
@@ -11,7 +11,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
   ],
   declarations: [
-    SummaryComponent
+      StartPageComponent
   ]
 })
-export class SummaryModule { }
+
+export class StartPageModule { }

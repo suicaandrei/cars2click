@@ -4,11 +4,13 @@
     padding: 20px;
     display: flex;
     justify-content: center;
+    font-family: 'Poppins' !important;
 
     .card {
-        margin-top: 30px;
+        margin-top: 20px;
         padding: 20px;
         box-shadow: $shadows;
+        border-radius: 5px;
 
         .crypto {
             span {
@@ -24,4 +26,8 @@
             }
         }
     }
+}
+
+mat-spinner {
+    margin: 250px auto;
 }

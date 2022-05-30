@@ -1,4 +1,4 @@
-<div class="wrapp">
+<div class="wrapp" *ngIf="showSpinner;else loadPage">
   <div class="card">
     <div class="title">
       <h1>GO TO</h1>
@@ -16,3 +16,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #loadPage>
+  <mat-spinner diameter="60"></mat-spinner>
+</ng-template>

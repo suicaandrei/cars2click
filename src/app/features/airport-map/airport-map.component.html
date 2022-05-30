@@ -1,30 +1,33 @@
-<div class="wrapper" *ngIf="loadPage;else loadPage">
-    <div class="left">
-        <google-map (mapClick)="setSearchPosition($event)" [options]="options" [width]="800">
-            <map-marker [clickable]="true" [position]="markerPosition" [options]="markerOptions"></map-marker>
-            <map-marker *ngFor="let markerPosition of airportsMarkerPositions" [position]="markerPosition"></map-marker>
-        </google-map>
-    </div>
-    <div class="right" *ngIf="loadAirports;else loadAirports">
-        <div class="radius">
-            <h1>Radius</h1>
-            <mat-form-field appearance="outline">
-                <input matInput type="number" [formControl]="radiusControl" min="0">
-            </mat-form-field>
-            <button (click)="searchAirports()">Search</button>
+<div *ngIf="!loadPage;else showSpinner">
+    <app-page-title [pageTitle]="'Airport Map Search'"></app-page-title>
+    <div class="wrapper">
+        <div class="left">
+            <google-map (mapClick)="setSearchPosition($event)" [options]="options" [width]="800">
+                <map-marker [clickable]="true" [position]="markerPosition" [options]="markerOptions"></map-marker>
+                <map-marker *ngFor="let markerPosition of airportsMarkerPositions" [position]="markerPosition">
+                </map-marker>
+            </google-map>
         </div>
-        <div *ngIf="noAirportsFound">
-            <span>No airports found</span>
+        <div class="right" *ngIf="!loadAirports;else showSpinner">
+            <div class="radius">
+                <h1>Radius</h1>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" [formControl]="radiusControl" min="0">
+                    <mat-error *ngIf="radiusControl.touched && radiusControl.invalid">
+                        Only positive number allowed
+                    </mat-error>
+                </mat-form-field>
+                <button (click)="searchAirports()">Search</button>
+            </div>
+            <div *ngIf="noAirportsFound">
+                <span>No airports found</span>
+            </div>
+            <app-airports-table [airports]="airports"></app-airports-table>
         </div>
-        <app-airports-table [airports]="airports"></app-airports-table>
     </div>
-    <ng-template #loadAirports>
-        <mat-spinner [diameter]="55"></mat-spinner>
-    </ng-template>
+    <app-navigation [pageNo]="1"></app-navigation>
 </div>
 
-<ng-template #loadPage>
-    <mat-spinner [diameter]="55"></mat-spinner>
+<ng-template #showSpinner>
+    <mat-spinner class="page-spinner" [diameter]="60"></mat-spinner>
 </ng-template>
-
-<app-navigation [pageNo]="1"></app-navigation>

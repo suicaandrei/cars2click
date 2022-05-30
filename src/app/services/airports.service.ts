@@ -6,10 +6,11 @@ import { Airport } from '../models/airport.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AirportsService {
 
-constructor(private http: HttpClient) { }
-  private apiUrl:string = 'https://aviation-reference-data.p.rapidapi.com';
+export class AirportsService {
+  private apiUrl: string = 'https://aviation-reference-data.p.rapidapi.com';
+
+  constructor(private http: HttpClient) { }
 
   public getAirports(lat: number, lng: number, radius: number): Promise<Airport[]> {
     const headers = new HttpHeaders({
@@ -18,6 +19,7 @@ constructor(private http: HttpClient) { }
     });
 
     let params = `?lat=${lat}&lon=${lng}&radius=${radius}`;
-    return this.http.get<Airport[]>(this.apiUrl + '/airports/search' + params, {headers}).toPromise();
+
+    return this.http.get<Airport[]>(this.apiUrl + '/airports/search' + params, { headers }).toPromise();
   }
 }

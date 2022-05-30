@@ -15,6 +15,7 @@
 
             h1 {
                 font-size: 40px;
+                font-family: 'Poppins';
             }
         }
 
@@ -44,4 +45,8 @@
             }
         }
     }
+}
+
+mat-spinner {
+    margin: 250px auto;
 }
