@@ -18,10 +18,15 @@ export class CryptoSearchComponent implements OnInit {
   public filteredCoins: Coin[] = [];
   public coinPriceHistory: CoinPriceHistory[] = [];
 
+  public loadPage: boolean = false;
+  public loadHistory: boolean = true;
+
   constructor(private cryptoService: CryptoService) { }
 
   async ngOnInit() {
     await this.loadCoins();
+
+    this.loadPage = true;
   }
 
   async loadCoins() {
@@ -32,6 +37,7 @@ export class CryptoSearchComponent implements OnInit {
   }
 
   async getCoinInfo(coin: Coin) {
+    this.loadHistory = false;
     this.selectedCoin = coin;
 
     let result = await this.cryptoService.getCoinPriceHistory(coin.uuid);
@@ -39,6 +45,10 @@ export class CryptoSearchComponent implements OnInit {
     if (result.status == "success") {
       this.coinPriceHistory = result.data.history;
     }
+
+    sessionStorage.setItem('coinSearched', coin.name);
+
+    this.loadHistory = true;
   }
 
   onSearchChange(searchValue: any): void {
@@ -51,7 +61,7 @@ export class CryptoSearchComponent implements OnInit {
 
   sortBy(filter: string) {
     this.selectedFilter = filter;
-    
+
     if (filter == "price") {
       this.coinPriceHistory.sort(function (a, b) {
         return b.price - a.price;

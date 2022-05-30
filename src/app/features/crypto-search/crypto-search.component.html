@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="loadPage;else loadPage">
   <div class="search-bar">
     <mat-form-field appearance="outline">
       <input matInput type="text" [formControl]="searchControl" (input)="onSearchChange($event)" placeholder="Search">
@@ -14,28 +14,35 @@
       </div>
     </div>
   </div>
+  <app-navigation [pageNo]="2"></app-navigation>
   <div class="data-table" *ngIf="selectedCoin">
-    <div class="headbar">
-      <div class="title">
-        <h1>Price History in the last 24hours for: {{selectedCoin.name}}</h1>
-      </div>
-      <div class="filters">
-        <span class="sort-by">Sort by</span>
-        <div class="filter-btn" (click)="sortBy('price')"  [ngClass]="{'selected': selectedFilter ==  'price'}">
-          <mat-icon>arrow_downward</mat-icon>
-          <span>Price Descending</span>
+    <div *ngIf="loadHistory;else loadPage">
+      <div class="headbar">
+        <div class="title">
+          <h1>Price History in the last 24hours for: {{selectedCoin.name}}</h1>
         </div>
-        <div class="filter-btn" (click)="sortBy('date')" [ngClass]="{'selected': selectedFilter ==  'date'}">
-          <mat-icon>arrow_upward</mat-icon>
-          <span>Date Ascending</span>
+        <div class="filters">
+          <span class="sort-by">Sort by</span>
+          <div class="filter-btn" (click)="sortBy('price')" [ngClass]="{'selected': selectedFilter ==  'price'}">
+            <mat-icon>arrow_downward</mat-icon>
+            <span>Price Descending</span>
+          </div>
+          <div class="filter-btn" (click)="sortBy('date')" [ngClass]="{'selected': selectedFilter ==  'date'}">
+            <mat-icon>arrow_upward</mat-icon>
+            <span>Date Ascending</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row" *ngFor="let price of coinPriceHistory">
-      <div class="price">
-        <span> Price: {{price.price}}</span>
+      <div class="row" *ngFor="let price of coinPriceHistory">
+        <div class="price">
+          <span> Price: {{price.price}}</span>
+        </div>
+        <div class="date">Date: {{price.timestamp * 1000 | date:'medium'}}</div>
       </div>
-      <div class="date">Date: {{price.timestamp * 1000 | date:'medium'}}</div>
     </div>
   </div>
 </div>
+
+<ng-template #loadPage>
+  <mat-spinner [diameter]="55"></mat-spinner>
+</ng-template>

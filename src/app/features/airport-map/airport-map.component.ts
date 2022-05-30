@@ -62,6 +62,8 @@ export class AirportMapComponent implements OnInit {
       })
     });
 
+    sessionStorage.setItem('airports', JSON.stringify(this.airports));
+
     this.noAirportsFound = this.airports.length == 0;
     this.loadAirports = false;
   }

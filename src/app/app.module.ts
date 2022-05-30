@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CryptoSearchModule } from './features/crypto-search/crypto-search.module';
 import { SharedModule } from './shared/shared.module';
+import { SummaryModule } from './features/summary/summary.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     CommonModule,
     CryptoSearchModule,
-    SharedModule
+    SharedModule,
+    SummaryModule,
+    MatProgressSpinnerModule
   ],
   exports: [
   ],

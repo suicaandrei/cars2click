@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Airport } from 'src/app/models/airport.model';
 
 @Component({
   selector: 'app-summary',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
+  public coinSearched: string | null;
+  public airports: Airport[] = [];
 
-  constructor() { }
+  constructor() {
+    this.coinSearched = sessionStorage.getItem("coinSearched");
+    
+    this.airports = JSON.parse(sessionStorage.getItem("airports")!);
+  }
 
   ngOnInit() {
   }

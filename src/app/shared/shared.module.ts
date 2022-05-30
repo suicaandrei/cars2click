@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AirportsTableComponent } from './airports-table/airports-table.component';
+
 
 @NgModule({
   imports: [
@@ -9,10 +11,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatProgressSpinnerModule
   ],
   declarations: [
-    NavigationComponent
+    NavigationComponent,
+    AirportsTableComponent
   ],
   exports: [
-    NavigationComponent
+    NavigationComponent,
+    AirportsTableComponent
   ]
 })
 export class SharedModule { }

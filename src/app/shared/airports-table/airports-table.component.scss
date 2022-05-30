@@ -1,0 +1,20 @@
+.airports {
+    .row {
+        display: table-row;
+    }
+
+    .row:nth-child(even) {
+        background-color: whitesmoke;
+    }
+
+    .column {
+        display: table-cell;
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 17px;
+        padding: 10px;
+        text-align: left;
+        vertical-align: middle;
+    }
+}

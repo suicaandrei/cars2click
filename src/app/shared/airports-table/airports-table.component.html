@@ -1,0 +1,12 @@
+<div class="airports" *ngIf="airports.length > 0">
+  <div class="row table-header">
+      <div class="column">Airport Name</div>
+      <div class="column">Iata Code</div>
+      <div class="column">Icao Code</div> 
+  </div>
+  <div class="row" *ngFor="let airport of airports">
+      <div class="column">{{airport.name}}</div>
+      <div class="column">{{airport.iataCode}}</div>
+      <div class="column">{{airport.icaoCode}}</div> 
+  </div>
+</div>
