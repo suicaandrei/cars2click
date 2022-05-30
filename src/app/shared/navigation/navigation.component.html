@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="btn-wrapper">
+    <button (click)="goPrevious()">PREVIOUS PAGE</button>
+  </div>
+  <div class="btn-wrapper" *ngIf="pageNo < 3">
+    <button (click)="goNext()">NEXT PAGE</button>
+  </div>
+</div>

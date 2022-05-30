@@ -1,24 +1,41 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="loadPage;else loadPage">
     <div class="left">
-        <google-map (mapClick)="setSearchPosition($event)" [options]="options">
-            <map-marker [clickable]="true" [position]="markerPosition"></map-marker>
+        <google-map (mapClick)="setSearchPosition($event)" [options]="options" [width]="800">
+            <map-marker [clickable]="true" [position]="markerPosition" [options]="markerOptions"></map-marker>
             <map-marker *ngFor="let markerPosition of airportsMarkerPositions" [position]="markerPosition"></map-marker>
         </google-map>
     </div>
-    <div class="right">
+    <div class="right" *ngIf="loadAirports;else loadAirports">
         <div class="radius">
-            <mat-label>Radius</mat-label>
+            <h1>Radius</h1>
             <mat-form-field appearance="outline">
-                <input matInput type="number" [formControl]="radiusControl">
+                <input matInput type="number" [formControl]="radiusControl" min="0">
             </mat-form-field>
+            <button (click)="searchAirports()">Search</button>
         </div>
-        <div class="airports">
-            <div class="airport" *ngFor="let airport of airports">
-                <div class="name">{{airport.name}}</div>
-                <div class="iataCode">{{airport.iataCode}}</div>
-                <div class="icaoCode">{{airport.icaoCode}}</div>
+        <div *ngIf="noAirportsFound">
+            <span>No airports found</span>
+        </div>
+        <div class="airports" *ngIf="airports.length > 0">
+            <div class="row table-header">
+                <div class="column">Airport Name</div>
+                <div class="column">Iata Code</div>
+                <div class="column">Icao Code</div> 
+            </div>
+            <div class="row" *ngFor="let airport of airports">
+                <div class="column">{{airport.name}}</div>
+                <div class="column">{{airport.iataCode}}</div>
+                <div class="column">{{airport.icaoCode}}</div> 
             </div>
         </div>
     </div>
-    <button (click)="searchAirports()">Search</button>
+    <ng-template #loadAirports>
+        <mat-spinner [diameter]="55"></mat-spinner>
+    </ng-template>
 </div>
+
+<ng-template #loadPage>
+    <mat-spinner [diameter]="55"></mat-spinner>
+</ng-template>
+
+<app-navigation [pageNo]="1"></app-navigation>

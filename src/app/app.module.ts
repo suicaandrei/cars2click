@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CryptoSearchModule } from './features/crypto-search/crypto-search.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CryptoSearchModule } from './features/crypto-search/crypto-search.modul
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    CryptoSearchModule
+    CryptoSearchModule,
+    SharedModule
   ],
   exports: [
   ],

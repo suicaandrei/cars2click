@@ -4,6 +4,8 @@ import { AirportMapComponent } from "./airport-map.component";
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { SharedModule } from "src/app/shared/shared.module";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { CommonModule } from "@angular/common";
         GoogleMapsModule,
         MatInputModule,
         ReactiveFormsModule,
-        CommonModule
+        CommonModule,
+        SharedModule,
+        MatProgressSpinnerModule
     ],
     declarations: [
         AirportMapComponent
