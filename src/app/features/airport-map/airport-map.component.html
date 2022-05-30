@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="left">
+        <google-map (mapClick)="setSearchPosition($event)" [options]="options">
+            <map-marker [clickable]="true" [position]="markerPosition"></map-marker>
+            <map-marker *ngFor="let markerPosition of airportsMarkerPositions" [position]="markerPosition"></map-marker>
+        </google-map>
+    </div>
+    <div class="right">
+        <div class="radius">
+            <mat-label>Radius</mat-label>
+            <mat-form-field appearance="outline">
+                <input matInput type="number" [formControl]="radiusControl">
+            </mat-form-field>
+        </div>
+        <div class="airports">
+            <div class="airport" *ngFor="let airport of airports">
+                <div class="name">{{airport.name}}</div>
+                <div class="iataCode">{{airport.iataCode}}</div>
+                <div class="icaoCode">{{airport.icaoCode}}</div>
+            </div>
+        </div>
+    </div>
+    <button (click)="searchAirports()">Search</button>
+</div>
